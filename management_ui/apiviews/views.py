@@ -3,7 +3,7 @@ from django.views.generic import DetailView, RedirectView, UpdateView
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponse
-
+import services
 
 def main_page(request):
-    
+    pass
