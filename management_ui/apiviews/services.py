@@ -1,3 +1,4 @@
+import requests
 
 def get_count_reliant_parties():
     url = 'http://127.0.0.1:8000/api/v1/reliantparties/count' 
