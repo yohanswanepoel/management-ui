@@ -14,11 +14,11 @@
             </div>
           </section>
         <section class="pf-c-page__main-section">
-            <h1>{{ question.question_text }}</h1>
+            <h1>{{ party.name }}</h1>
 
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-            <form action="{% url 'polls:vote' question.id %}" method="post">
+            <form action="{% url 'management:partydetail' party.pk %}" method="post">
             {% csrf_token %}
                 <inputs field="text"></inputs>
             <input type="submit" value="Vote">

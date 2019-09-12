@@ -41,3 +41,19 @@ def list_parties(request, status):
         'parties' : parties
     }
     return render(request, 'reliantparties/list.html', context)
+
+def detail_party(request, pk):
+    # New
+    # Testing
+    # Active
+    # Down
+    # Retired
+    print(request)
+    filter_field = pk
+    party = services.get_party(filter_field)
+    # Need to define HTML
+    context = {
+        'filter' : filter_field,
+        'party' : party
+    }
+    return render(request, 'reliantparties/detail.html', context)

@@ -27,3 +27,13 @@ def get_parties(status):
     result = requests.get(url)
     response = result.json()
     return response
+
+def get_party(key):
+    url = URL_RELIANTPARTIES
+    if key is not None:
+        url = url + key
+    #params = {'year': year, 'author': author}
+    #r = requests.get(url, params=params)
+    result = requests.get(url)
+    response = result.json()
+    return response
