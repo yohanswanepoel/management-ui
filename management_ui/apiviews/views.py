@@ -24,4 +24,20 @@ def main_page(request):
     context = {
         'parties_count' : parties
     }
-    return render(request,'base_logged_in.html', context)
+    return render(request, 'base_logged_in.html', context)
+
+def list_parties(request, status):
+    # New
+    # Testing
+    # Active
+    # Down
+    # Retired
+    print(request)
+    filter_field = status
+    parties = services.get_parties(filter_field)
+    # Need to define HTML
+    context = {
+        'filter' : filter_field,
+        'parties' : parties
+    }
+    return render(request, 'reliantparties/list.html', context)

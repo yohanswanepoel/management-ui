@@ -10,4 +10,5 @@ from management_ui.users.views import (
 app_name = "apiviews"
 urlpatterns = [
     path("", views.main_page, name="main"),
+    path("parties/<status>", views.list_parties, name="parties")
 ]

@@ -17,6 +17,9 @@
             <div class="pf-l-gallery pf-m-gutter">
                 {% for key, value in parties_count.items %}
               <div class="pf-l-gallery__item">
+                {% if value.count > 0 %}
+                <a href="{% url 'management:parties' key %}">
+                {% endif %}
                 <div class="pf-c-card">
                     <div class="pf-c-card__header pf-c-title pf-m-md">
                         {{ key }}
@@ -25,6 +28,9 @@
                       {{ value.count }}
                     </div>
                 </div>
+                {% if value.count > 0 %}
+                </a>
+                {% endif %}
               </div>
               {% endfor %}
             </div>

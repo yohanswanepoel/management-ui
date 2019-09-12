@@ -1,6 +1,7 @@
 import requests
 
-URL_RELIANTPARTIES = "http://polyglot-example-rp-myproject.192.168.99.103.nip.io/api/v1/reliantparties/"
+#URL_RELIANTPARTIES = "http://polyglot-example-rp-myproject.192.168.99.103.nip.io/api/v1/reliantparties/"
+URL_RELIANTPARTIES = "http://0.0.0.0:7080/api/v1/reliantparties/"
 def get_count_reliant_parties(status):
     # Registered
     # Test
@@ -13,7 +14,16 @@ def get_count_reliant_parties(status):
         url = url + "?status=" + status
     #params = {'year': year, 'author': author}
     #r = requests.get(url, params=params)
-    r = requests.get(url)
-    response = r.json()
-    print (response)
+    result = requests.get(url)
+    response = result.json()
+    return response
+
+def get_parties(status):
+    url = URL_RELIANTPARTIES
+    if status is not None:
+        url = url + "?status=" + status
+    #params = {'year': year, 'author': author}
+    #r = requests.get(url, params=params)
+    result = requests.get(url)
+    response = result.json()
     return response
