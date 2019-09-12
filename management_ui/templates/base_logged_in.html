@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Overview{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-12">
+        <section class="pf-c-page__main-section pf-m-light">
+            <div class="pf-c-content">
+              <h1>Reliant Parties</h1>
+            </div>
+          </section>
+        <section class="pf-c-page__main-section">
+            <div class="pf-l-gallery pf-m-gutter">
+                {% for key, value in parties_count.items %}
+              <div class="pf-l-gallery__item">
+                <div class="pf-c-card">
+                    <div class="pf-c-card__header pf-c-title pf-m-md">
+                        {{ key }}
+                    </div>
+                    <div class="pf-c-card__body">
+                      {{ value.count }}
+                    </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </section>
+          <section class="pf-c-page__main-section pf-m-light">
+              <div class="pf-c-content">
+                <h1>Providers</h1>
+              </div>
+          </section>
+          <section class="pf-c-page__main-section">
+              <div class="pf-l-gallery pf-m-gutter">
+                <div class="pf-l-gallery__item">
+                  <div class="pf-c-card">
+                      <div class="pf-c-card__header pf-c-title pf-m-md">
+                        Header
+                      </div>
+                      <div class="pf-c-card__body">
+                        This card has no footer
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+    </div>
+  </div>
+
+</div>
+{% endblock content %}
+

@@ -1,10 +1,19 @@
 import requests
 
-def get_count_reliant_parties():
-    url = 'http://127.0.0.1:8000/api/v1/reliantparties/count' 
+URL_RELIANTPARTIES = "http://polyglot-example-rp-myproject.192.168.99.103.nip.io/api/v1/reliantparties/"
+def get_count_reliant_parties(status):
+    # Registered
+    # Test
+    # Active
+    # Down
+    # Retired
+    # Need one for active / not - active
+    url = URL_RELIANTPARTIES + "count/"
+    if status is not None:
+        url = url + "?status=" + status
     #params = {'year': year, 'author': author}
     #r = requests.get(url, params=params)
     r = requests.get(url)
-    parties = r.json()
-    parties_list = {'reliant_parties':parties['results']}
-    return parties_list
+    response = r.json()
+    print (response)
+    return response

@@ -62,24 +62,13 @@
               <div class="pf-c-page__header-tools-group">
                   <div class="pf-m-user">
                 {% if request.user.is_authenticated %}
-                  
-
                         {# URL provided by django-allauth/account/urls.py #}
                         <a class="pf-c-nav__link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
-
-                  {% else %}
-                    <li class="pf-c-nav-item">
-                      {# URL provided by django-allauth/account/urls.py #}
-                      <a id="sign-up-link" class="pf-c-nav__link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
-                    </li>
-                    <li class="pf-c-nav-item">
-                      {# URL provided by django-allauth/account/urls.py #}
-                      <a id="log-in-link" class="pf-c-nav__link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
-                    </li>
+                        <img class="pf-c-avatar" src="{% static 'images/img_avatar.svg' %}" alt="Avatar image">
                   {% endif %}
                 
               </div>
-              <img class="pf-c-avatar" src="{% static 'images/img_avatar.svg' %}" alt="Avatar image">
+              
             </div>
           </header>
           <div class="pf-c-page__sidebar">
@@ -115,13 +104,13 @@
                       <a class="pf-c-nav__link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
                       </li>
                   {% else %}
-                    <li class="nav-item">
+                    <li class="pf-c-nav__item">
                       {# URL provided by django-allauth/account/urls.py #}
-                      <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+                      <a id="sign-up-link" class="pf-c-nav__link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="pf-c-nav__item">
                       {# URL provided by django-allauth/account/urls.py #}
-                      <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
+                      <a id="log-in-link" class="pf-c-nav__link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
                     </li>
                   {% endif %}
                   </ul>
