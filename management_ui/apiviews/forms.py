@@ -2,7 +2,7 @@ from django import forms
 from .choices import *
 
 class ProviderForm(forms.Form):   
-    id = forms.CharField(max_length=255, widget=forms.HiddenInput())
+    id = forms.CharField(max_length=255, widget=forms.HiddenInput(), required = False)
     name = forms.CharField(max_length=255)
     status = forms.ChoiceField(choices = STATUS_CHOICES, initial="New", widget=forms.Select())
     email = forms.EmailField(max_length=255)

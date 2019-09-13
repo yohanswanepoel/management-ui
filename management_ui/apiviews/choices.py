@@ -1,7 +1,7 @@
 from django.utils.translation import gettext as _
 
 STATUS_CHOICES = (
-    ("New", _("Unread")),
+    ("New", _("New")),
     ("Alpha", _("Alpha")),
     ("Beta", _("Beta")),
     ("Active", _("Active")),
