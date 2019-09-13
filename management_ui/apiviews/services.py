@@ -2,11 +2,11 @@ import requests
 import random
 
 URL_RELIANTPARTIES = "http://polyglot-demo-rp-myproject.192.168.99.104.nip.io/api/v1/reliantparties/"
-URL_PROVIDER = "http://polyglot-demo-provider-myproject.192.168.99.104.nip.io/provider-api/api/v1/providers"
+URL_PROVIDER = "http://polyglot-demo-provider-myproject.192.168.99.104.nip.io/provider-api/api/v1/providers/"
 TIME_OUT = 2
 #URL_RELIANTPARTIES = "http://0.0.0.0:7080/api/v1/reliantparties/"
 
-def load_providers():
+def load_parties():
     states = ['ACT','NSW','NT','QLD','TAS','VIC','WA']
     status = ['New','Alpha','Beta','Active','Down','Retired']
     party = {}
@@ -27,6 +27,22 @@ def load_providers():
         update_create_party(party)
     return "Done"
 
+def load_providers():
+    states = ['ACT','NSW','NT','QLD','TAS','VIC','WA']
+    status = ['New','Alpha','Beta','Active','Down','Retired']
+    party = {}
+    party['contact'] = 'name'
+    party['status'] = 'New'
+    party['email'] = 'name@email.com'
+    party['businessNumber'] = '1233421243'
+    party['name'] = 'person name'
+    for x in range(40):
+        party['status'] = random.choice(status)
+        party['name'] = "name" + str(x)
+        party['contact'] = "contact" + str(x)
+        update_create_provider(party)
+    return "Done"
+
 def delete_all_parties():
     url = URL_RELIANTPARTIES + "clear/"
     print(url)
@@ -38,6 +54,15 @@ def delete_all_parties():
         response = result
     return response
 
+def get_count_providers():
+    url = URL_PROVIDER + "count/"
+    try:
+        result = requests.get(url, timeout = TIME_OUT)
+        response = result.json()
+    except:
+        response = {}
+    return response
+
 def get_count_reliant_parties(status):
     url = URL_RELIANTPARTIES + "count/"
     if status is not None:
@@ -47,6 +72,12 @@ def get_count_reliant_parties(status):
         response = result.json()
     except:
         response = {}
+    return response
+
+def get_providers():
+    url = URL_PROVIDER
+    result = request.get(url, timeout = TIME_OUT)
+    response = result.json()
     return response
 
 def get_parties(status):
@@ -81,4 +112,14 @@ def update_create_party(object):
         #Update
         url = URL_RELIANTPARTIES + object["id"] + "/"
         result = requests.put(url, data=object, timeout = TIME_OUT)
+    return object
+
+def update_create_provider(object):
+    if not 'id' in object:
+        object["id"] = ""
+    if object["id"] == "":
+        #Create
+        del object["id"]
+    url = URL_PROVIDER
+    result = requests.post(url, data=object, timeout = TIME_OUT)
     return object

@@ -21,9 +21,11 @@ def main_page(request):
     parties['Active'] = services.get_count_reliant_parties("Active")
     parties['Down'] = services.get_count_reliant_parties("Down")
     parties['Retired'] = services.get_count_reliant_parties("Retired")
+    providers = services.get_count_providers()
     # Need to define HTML
     context = {
-        'parties_count' : parties
+        'parties_count' : parties,
+        'providers_count' : providers
     }
     return render(request, 'base_logged_in.html', context)
 
@@ -33,6 +35,8 @@ def testing(request, task):
         result = services.delete_all_parties()
     elif task == "load_providers":
         result = services.load_providers()
+    elif task == "load_parties":
+        result = services.load_parties()
     context = {
         'messages': [result]
     }
@@ -42,11 +46,6 @@ def test_page(request):
     return render(request, 'test/test_page.html')
 
 def list_parties(request, status):
-    # New
-    # Testing
-    # Active
-    # Down
-    # Retired
     print(request)
     filter_field = status
     parties = services.get_parties(filter_field)
