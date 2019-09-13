@@ -4,7 +4,12 @@ from .base import env
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
-SECRET_KEY = env("DJANGO_SECRET_KEY")
+SECRET_KEY_IN_CASE = env(
+    "DJANGO_SECRET_KEY",
+    default="eZxRwmSHbMrNTOxWVTNJxclpd4Qrv0cLX1tHDjmRlve6sMDfpV4Q8DB9r81EwsHF",
+)
+
+SECRET_KEY = env("DJANGO_SECRET_KEY",SECRET_KEY_IN_CASE)
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["example.com"])
 
