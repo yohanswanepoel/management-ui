@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Overview{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-12">
+        <section class="pf-c-page__main-section pf-m-light">
+            <div class="pf-c-content">
+              <h1>Providers</h1>
+            </div>
+          </section>
+        <section class="pf-c-page__main-section">
+            <h1>{{ party.name }}</h1>
+
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+            <form action="{% url 'management:providercreateupdate' %}" novalidate class="pf-c-form" method="post">
+            {% csrf_token %}
+              {{ party }}
+              {{ form }}
+                  <div class="pf-c-form__group pf-m-action">
+                    <div class="pf-c-form__actions">
+                      <button class="pf-c-button pf-m-primary" type="submit">
+                        Submit form
+                      </button>
+                      <button class="pf-c-button pf-m-secondary" type="button">
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+            </form>
+          </section>
+          
+    </div>
+  </div>
+
+</div>
+{% endblock content %}
+
+

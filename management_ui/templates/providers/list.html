@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Overview{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-12">
+        <section class="pf-c-page__main-section pf-m-light">
+            <div class="pf-c-content">
+              <h1>Providers</h1>
+            </div>
+          </section>
+        <section class="pf-c-page__main-section">
+            <table class="pf-c-table pf-m-grid-md" role="grid" aria-label="This is a simple table example" id="simple-table">
+                <thead>
+                  <tr>
+                    <th>
+                      Name
+                    </th>
+                    <th>
+                      Status
+                    </th>
+                    <th>
+                      Email
+                    </th>
+                    <th>
+                      ABN
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in providers %}
+                  <tr>
+                    <td data-label="Name">
+                      {{ item.name }}
+                    </td>
+                    <td data-label="Status">
+                      {{ item.status }}
+                    </td>
+                    <td data-label="Email">
+                      {{ item.email }}
+                    </td>
+                    <td data-label="ABN">
+                      {{ item.businessNumber }}
+                    </td>
+                    <td class="pf-c-table__action">
+                        <a href="{% url 'management:providerdetail' item.id %}">
+                          <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            
+          </section>
+          
+    </div>
+  </div>
+
+</div>
+{% endblock content %}
+
+

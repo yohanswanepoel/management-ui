@@ -115,9 +115,34 @@
                 <div class="container">
 
                       {% if messages %}
-                          {% for message in messages %}
-                              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
-                          {% endfor %}
+                          
+                          <ul class="alert pf-c-alert-group pf-m-toast" id="alert">
+                              {% for message in messages %}
+                              <li class="pf-c-alert-group__item">
+                                <div class="pf-c-alert pf-m-{% if message.tags %}alert-{{ message.tags }}{% endif %}" aria-label="Success alert">
+                                  <div class="pf-c-alert__icon">
+                                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                  </div>
+                                  <h4 class="pf-c-alert__title">
+                                    <span class="pf-screen-reader">
+                                      Message:</span>Message
+                                  </h4>
+                                  <div class="pf-c-alert__description">
+                                    <p> 
+                                        {{ message }}
+                                    </p>
+                                  </div>
+                                  <div class="pf-c-alert__action">
+                                    <button class="pf-c-button pf-m-plain" type="button" aria-label="Close success alert: Newest notification" data-dismiss="alert">
+                                      <i class="fas fa-times" aria-hidden="true"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </li>
+                              {% endfor %}
+                            </ul>
+                              
+                          
                       {% endif %}
                 
                       {% block content %}

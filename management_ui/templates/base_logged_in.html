@@ -55,15 +55,33 @@
           <section class="pf-c-page__main-section">
               <div class="pf-l-gallery pf-m-gutter">
                 <div class="pf-l-gallery__item">
+                    {% if providers_count.count > 0 %}
+                    <a href="{% url 'management:providers' %}">
+                    {% endif %}
                   <div class="pf-c-card">
                       <div class="pf-c-card__header pf-c-title pf-m-md">
                         Providers
                       </div>
                       <div class="pf-c-card__body">
-                        {{ providers_count }}
+                        {{ providers_count.count }}
                       </div>
                   </div>
+                  {% if value.count > 0 %}
+                  </a>
+                  {% endif %}
                 </div>
+                <div class="pf-l-gallery__item">
+                    <a href="{% url 'management:providercreateupdate' %}">
+                    <div class="pf-c-card">
+                        <div class="pf-c-card__header pf-c-title pf-m-md">
+                            Add New
+                        </div>
+                        <div class="pf-c-card__body">
+                          <i class="fas fa-plus" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    </a>
+                  </div>
               </div>
             </section>
     </div>

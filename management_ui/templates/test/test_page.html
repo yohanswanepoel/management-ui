@@ -10,16 +10,19 @@
     <div class="col-sm-12">
         <section class="pf-c-page__main-section pf-m-light">
             <div class="pf-c-content">
-              <h1>Test and Data Loading Tools</h1>
+              <h1>Clear Data</h1>
             </div>
           </section>
         <section class="pf-c-page__main-section">  
             <div class="pf-l-gallery pf-m-gutter">  
                 <div class="pf-l-gallery__item">
-                    <a href="{% url 'management:testpagetask' task='clear_provider' %}">
+                    <a href="{% url 'management:testpagetask' task='clear_providers' %}">
                     <div class="pf-c-card">
                         <div class="pf-c-card__header pf-c-title pf-m-md">
-                        Clear all Providers
+                            Dump Providers
+                        </div>
+                        <div class="pf-c-card__body">
+                                <i class="pf-icon pf-icon-remove2"></i>
                         </div>
                     </div>
                     </a>
@@ -28,41 +31,62 @@
                     <a href="{% url 'management:testpagetask' task='clear_parties' %}">
                     <div class="pf-c-card">
                         <div class="pf-c-card__header pf-c-title pf-m-md">
-                            Clear all Reliant Parties
+                            Dump Reliant Parties
                         </div>
-                    </div>
-                    </a>
-                </div>
-                <div class="pf-l-gallery__item">
-                    <a href="{% url 'management:testpagetask' task='load_providers' %}">
-                    <div class="pf-c-card">
-                        <div class="pf-c-card__header pf-c-title pf-m-md">
-                            Populate Providers
-                        </div>
-                    </div>
-                    </a>
-                </div>
-                <div class="pf-l-gallery__item">
-                    <a href="{% url 'management:testpagetask' task='load_Parties' %}">
-                    <div class="pf-c-card">
-                        <div class="pf-c-card__header pf-c-title pf-m-md">
-                            Populate Reliant Parties
-                        </div>
-                    </div>
-                    </a>
-                </div>
-                <div class="pf-l-gallery__item">
-                    <a href="{% url 'management:testpagetask' task='mash' %}">
-                    <div class="pf-c-card">
-                        <div class="pf-c-card__header pf-c-title pf-m-md">
-                            Smash the system
+                        <div class="pf-c-card__body">
+                                <i class="pf-icon pf-icon-remove2"></i>
                         </div>
                     </div>
                     </a>
                 </div>
             </div>
         </section>
-          
+        <section class="pf-c-page__main-section pf-m-light">
+                <div class="pf-c-content">
+                  <h1>Load Data</h1>
+                </div>
+        </section>
+        <section class="pf-c-page__main-section">  
+                <div class="pf-l-gallery pf-m-gutter">  
+                    <div class="pf-l-gallery__item">
+                        <a href="{% url 'management:testpagetask' task='load_providers' %}">
+                        <div class="pf-c-card">
+                            <div class="pf-c-card__header pf-c-title pf-m-md">
+                                Populate Providers
+                            </div>
+                            <div class="pf-c-card__body">
+                                    <i class="pf-icon pf-icon-save"></i>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="pf-l-gallery__item">
+                        <a href="{% url 'management:testpagetask' task='load_parties' %}">
+                        <div class="pf-c-card">
+                            <div class="pf-c-card__header pf-c-title pf-m-md">
+                                Populate Reliant Parties
+                            </div>
+                            <div class="pf-c-card__body">
+                                    <i class="pf-icon pf-icon-save"></i>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="pf-l-gallery__item">
+                        <a href="{% url 'management:testpagetask' task='mash' %}">
+                        <div class="pf-c-card">
+                            <div class="pf-c-card__header pf-c-title pf-m-md">
+                                Smash the system
+                            </div>
+                            <div class="pf-c-card__body">
+                                    <i class="pf-icon pf-icon-history"></i>
+                            </div>
+                            
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
     </div>
   </div>
 
