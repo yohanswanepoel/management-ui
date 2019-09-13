@@ -8,3 +8,4 @@ psycopg2-binary==2.8.3
 # Django
 # ------------------------------------------------------------------------------
 django-anymail[mailgun]==6.1.0  # https://github.com/anymail/django-anymail
+django-extensions==2.2.1
