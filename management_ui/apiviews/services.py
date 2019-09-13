@@ -1,7 +1,8 @@
 import requests
 
-#URL_RELIANTPARTIES = "http://polyglot-example-rp-myproject.192.168.99.103.nip.io/api/v1/reliantparties/"
-URL_RELIANTPARTIES = "http://0.0.0.0:7080/api/v1/reliantparties/"
+URL_RELIANTPARTIES = "http://polyglot-demo-rp-myproject.192.168.99.104.nip.io/api/v1/reliantparties/"
+TIME_OUT = 2
+#URL_RELIANTPARTIES = "http://0.0.0.0:7080/api/v1/reliantparties/"
 def get_count_reliant_parties(status):
     # Registered
     # Test
@@ -14,8 +15,11 @@ def get_count_reliant_parties(status):
         url = url + "?status=" + status
     #params = {'year': year, 'author': author}
     #r = requests.get(url, params=params)
-    result = requests.get(url)
-    response = result.json()
+    try:
+        result = requests.get(url, timeout = TIME_OUT)
+        response = result.json()
+    except:
+        response = {}
     return response
 
 def get_parties(status):
@@ -24,7 +28,7 @@ def get_parties(status):
         url = url + "?status=" + status
     #params = {'year': year, 'author': author}
     #r = requests.get(url, params=params)
-    result = requests.get(url)
+    result = requests.get(url, timeout = TIME_OUT)
     response = result.json()
     return response
 
@@ -34,6 +38,17 @@ def get_party(key):
         url = url + key
     #params = {'year': year, 'author': author}
     #r = requests.get(url, params=params)
-    result = requests.get(url)
+    result = requests.get(url, timeout = TIME_OUT)
     response = result.json()
     return response
+
+def update_create_party(object):
+    if object["id"] is None:
+        #Create
+        url = URL_RELIANTPARTIES
+        result = requests.post(url, data=object, timeout = TIME_OUT)
+    else:
+        #Update
+        url = URL_RELIANTPARTIES + object["id"] + "/"
+        result = requests.put(url, data=object, timeout = TIME_OUT)
+    return object

@@ -1,4 +1,5 @@
 from . import services
+from .forms import ProviderForm
 from django.urls import reverse
 from django.views.generic import DetailView, RedirectView, UpdateView
 from django.contrib import messages
@@ -42,18 +43,43 @@ def list_parties(request, status):
     }
     return render(request, 'reliantparties/list.html', context)
 
-def detail_party(request, pk):
-    # New
-    # Testing
-    # Active
-    # Down
-    # Retired
-    print(request)
-    filter_field = pk
-    party = services.get_party(filter_field)
+def detail_party(request, id):
+    if request.method == 'POST':
+        form = ProviderForm(request.POST)
+        if form.is_valid():
+            pass  # does nothing, just trigger the validation
+    else:
+        if id is None:
+            form = ProviderForm()
+        else:
+            party = services.get_party(id)
+            form = ProviderForm(initial=party)
+
     # Need to define HTML
     context = {
-        'filter' : filter_field,
-        'party' : party
+        'form' : form
+    }
+    return render(request, 'reliantparties/detail.html', context)
+
+def update_create_party(request):
+    if request.method == 'POST':
+        form = ProviderForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            print(data)
+            resp_dat = services.update_create_party(data)
+            form = ProviderForm(initial=resp_dat)
+            
+    else:
+        if id is None:
+            form = ProviderForm()
+        else:
+            #This should never execute
+            party = services.get_party(id)
+            form = ProviderForm(initial=party)
+
+    # Need to define HTML
+    context = {
+        'form' : form
     }
     return render(request, 'reliantparties/detail.html', context)

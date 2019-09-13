@@ -14,7 +14,6 @@
             </div>
           </section>
         <section class="pf-c-page__main-section">
-            {{ parties }}
             <table class="pf-c-table pf-m-grid-md" role="grid" aria-label="This is a simple table example" id="simple-table">
                 <thead>
                   <tr>
@@ -48,7 +47,7 @@
                       {{ item.abn }}
                     </td>
                     <td class="pf-c-table__action">
-                        <a href="{% url 'management:partydetail' item.pk %}">
+                        <a href="{% url 'management:partydetail' item.id %}">
                           <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
                         </a>
                       </td>

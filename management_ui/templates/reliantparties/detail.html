@@ -18,10 +18,20 @@
 
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-            <form action="{% url 'management:partydetail' party.pk %}" method="post">
+            <form action="{% url 'management:partycreateupdate' %}" novalidate class="pf-c-form" method="post">
             {% csrf_token %}
-                <inputs field="text"></inputs>
-            <input type="submit" value="Vote">
+              {{ party }}
+              {{ form }}
+                  <div class="pf-c-form__group pf-m-action">
+                    <div class="pf-c-form__actions">
+                      <button class="pf-c-button pf-m-primary" type="submit">
+                        Submit form
+                      </button>
+                      <button class="pf-c-button pf-m-secondary" type="button">
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
             </form>
           </section>
           
