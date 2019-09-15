@@ -3,8 +3,8 @@ import random
 import json
 import os
 
-URL_RELIANTPARTIES = "http://" os.getenv('URL_RELIANTPARTIES', '') + ":8080/api/v1/reliantparties/"
-URL_PROVIDER = "http://" os.getenv('URL_PROVIDER', '') + ":8080/provider-api/api/v1/providers/"
+URL_RELIANTPARTIES = "http://" + os.getenv('URL_RELIANTPARTIES', '') + ":8080/api/v1/reliantparties/"
+URL_PROVIDER = "http://" + os.getenv('URL_PROVIDER', '') + ":8080/provider-api/api/v1/providers/"
 
 #URL_RELIANTPARTIES = "http://polyglot-demo-rp-myproject.192.168.99.104.nip.io/api/v1/reliantparties/"
 #URL_PROVIDER = "http://polyglot-demo-provider-myproject.192.168.99.104.nip.io/provider-api/api/v1/providers/"
@@ -13,12 +13,13 @@ TIME_OUT = 2
 
 def get_count_providers():
     url = URL_PROVIDER + "count/"
+    json_response = {}
     try:
         result = requests.get(url, timeout = TIME_OUT)
         response = result.content.decode("utf-8").replace("'", '"')
+        json_response = json.loads(response)
     except:
         response = {}
-    json_response = json.loads(response)
     return json_response
 
 def get_count_reliant_parties(status):
