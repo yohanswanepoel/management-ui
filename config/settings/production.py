@@ -14,7 +14,30 @@ ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
 
 # DATABASES
 # ------------------------------------------------------------------------------
-DATABASES["default"] = env.db("DATABASE_URL")  # noqa F405
+def config():
+    service_name = os.getenv('DATABASE_SERVICE_NAME', '')
+    if service_name:
+        print(".....................................SETUP POSTGRES....................")
+        return {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME':  os.getenv('DATABASE_NAME'),
+            'USER': os.getenv('DATABASE_USER'),
+            'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+            'HOST': os.getenv('DATABASE_SERVICE_NAME'),
+            'PORT': 5432,
+        }
+    else:
+        print(".....................................SETUP SQL LITE....................")
+        #name = os.path.join(settings.BASE_DIR, 'db.sqlite3')
+        name = 'sampledb'
+        return {
+            'ENGINE': 'django.db.backends.sqlite3',
+	        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+
+DATABASES = {
+    'default': config()
+}
 DATABASES["default"]["ATOMIC_REQUESTS"] = True  # noqa F405
 DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)  # noqa F405
 
