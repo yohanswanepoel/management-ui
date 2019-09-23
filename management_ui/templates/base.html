@@ -146,7 +146,32 @@
                       {% endif %}
                 
                       {% block content %}
-                        <p>Use this document as a way to quick start any new project.</p>
+                      <section class="pf-c-page__main-section pf-m-light">
+                          <div class="pf-c-content">
+                            <h1>Polyglot Test Application</h1>
+                          </div>
+                        </section>
+                        <section class="pf-c-page__main-section">
+                        This is a polyglot application to demonstrate working OpenShift environment. It uses different techniques to demonstrate use cases such as:
+                        <ul>
+                          <li>Onboarding: Single OpenShift Catalogue item that provisions complete environment</li>
+                          <li>How different technologies such as Java and Python can work together</li>
+                          <li>Breakig up of a monolith - each component has it's own database</li>
+                          <li>Secure and standardised builds using Source to Image</li>
+                          <li>Can be used to show innerloop development using OpenShift DO commandline</li>
+                        </ul>
+  
+                        <img src="{% static 'images/arch.png' %}">
+                        <ol>
+                            <li>The template is stored in GIT and exposed on the OpenShift catalogue</li>
+                            <li>A user requests the complete environment using the template</li>
+                            <li>The template triggers S2I builds for Python and Java compnents and provisions. Build config pulls source directly from GIT</li>
+                            <li>The user interacts with the Managent UI via OpenShift Router</li>  
+                            <li>The router routes request messages to the Management UI service. Allowing scaling</li>
+                            <li>The management UI interacts with the Provider API via REST using the internal service network</li>
+                            <li>The management UI interacts with the Reliant Party API via REST using the internal service network</li>
+                        </ol>
+                      </section>
                       {% endblock content %}
                 
                     </div> <!-- /container -->
