@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
+from django.utils import simplejson
 
 def main_page(request):
     # Need to define HTML
@@ -12,3 +13,9 @@ def main_page(request):
         return redirect(reverse("management:main"))
     else:
         return render(request,'pages/home.html')
+
+def health(request):
+    data = {
+        'status': 'healthy'
+    }
+    return HttpResponse(data, content_type='application/json')
