@@ -2,9 +2,9 @@ from django.urls import reverse
 from django.views.generic import DetailView, RedirectView, UpdateView
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
-from django.utils import simplejson
+import json
 
 def main_page(request):
     # Need to define HTML
@@ -18,4 +18,4 @@ def health(request):
     data = {
         'status': 'healthy'
     }
-    return HttpResponse(data, content_type='application/json')
+    return JsonResponse(data)
