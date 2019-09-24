@@ -1,4 +1,4 @@
-management-ui
+Mangement UI
 =============
 
 Management UI
@@ -13,6 +13,19 @@ Management UI
 
 :License: GPLv3
 
+
+Purpose
+-------
+This project provides a management UI component for two back-end APIs to demonstrate polyglot development on Kubernetes
+
+Dependencies
+------------
+
+Two constructed URLS - based on Host Name - It could be done better
+* Provider API: URL_PROVIDER = "http://" + os.getenv('URL_PROVIDER', '') + ":8080/provider-api/api/v1/providers/"
+* Reliant Party API:  URL_RELIANTPARTIES = "http://" + os.getenv('URL_RELIANTPARTIES', '') + ":8080/api/v1/reliantparties/"
+
+This assumes the dependencies are running in the same Kubernetes Name Spae
 
 Settings
 --------
